@@ -12,5 +12,8 @@
         <property name="mapperInterface" value="org.phantom.personalworkstation.dao.UserInfoDAO"></property>
         <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
     </bean>
-	
+	<bean id="userAccountInfoDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="org.phantom.personalworkstation.dao.UserAccountInfoDAO"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean>
 </beans>

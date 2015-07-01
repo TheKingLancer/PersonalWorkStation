@@ -6,5 +6,6 @@
 	<bean id="userService" class="org.phantom.personalworkstation.service.UserServiceIml">
 		<property name="userLoginDAO" ref="userLoginDAO"></property>
 		<property name="userInfoDAO" ref="userInfoDAO"></property>
+		<property name="userAccountInfoDAO" ref="userAccountInfoDAO"></property>
 	</bean>
 </beans>

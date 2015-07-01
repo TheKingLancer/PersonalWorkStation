@@ -1,5 +1,7 @@
 package org.phantom.personalworkstation.service;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.phantom.personalworkstation.dao.UserAccountInfoDAO;
 import org.phantom.personalworkstation.dao.UserInfoDAO;
 import org.phantom.personalworkstation.dao.UserLoginDAO;
@@ -8,7 +10,9 @@ import org.phantom.personalworkstation.entity.UserInfo;
 import org.phantom.personalworkstation.entity.UserLogin;
 import org.springframework.transaction.annotation.Transactional;
 
+
 public class UserServiceIml implements UserService {
+	private static Log logger = LogFactory.getLog(UserServiceIml.class);
 	private UserLoginDAO userLoginDAO;
 	private UserInfoDAO userInfoDAO;
 	private UserAccountInfoDAO userAccountInfoDAO;
@@ -48,7 +52,8 @@ public class UserServiceIml implements UserService {
 		UserAccountInfo userAccountInfo = new UserAccountInfo();
 		userAccountInfo.setUserID(userLogin.getId());
 		this.userAccountInfoDAO.addUserAccountInfo(userAccountInfo);
-		return false;
+		logger.info("注册"+userLogin.toString());
+		return true;
 	}
 
 	@Override
@@ -58,6 +63,7 @@ public class UserServiceIml implements UserService {
 
 	@Override
 	public boolean updateUserInfo(UserInfo userInfo) {
+		logger.info("更新用户信息"+userInfo.toString());
 		return this.userInfoDAO.updateUserInfo(userInfo)>0;
 	}
 
@@ -68,6 +74,7 @@ public class UserServiceIml implements UserService {
 
 	@Override
 	public boolean updateUserAccountInfo(UserAccountInfo userAccountInfo) {
+		logger.info("更新用户统计信息"+userAccountInfo.toString());
 		return this.userAccountInfoDAO.updateUserAccountInfo(userAccountInfo)>0;
 	}
 
