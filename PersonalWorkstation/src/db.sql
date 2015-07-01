@@ -22,7 +22,6 @@ drop table user_account_info;
 create table user_account_info (
 id varchar(50)  primary key,
 userid varchar(50) not null,
-birthday varchar(50) default null,
 pv int default 0,
 article_amount int default 0,
 message_amount int default 0
