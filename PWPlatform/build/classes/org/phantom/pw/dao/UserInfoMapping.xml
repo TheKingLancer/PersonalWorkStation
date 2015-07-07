@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.phantom.personalworkstation.dao.UserInfoDAO">
+	<insert id="addUserInfo" parameterType="UserInfo" >
+		insert into user_info values(uuid(),#{userID},#{nickname},#{birthday},#{sex},#{personalizedSignature},#{headPortraitPath})
+	</insert>
+	<update id="updateUserInfo" parameterType="UserInfo">
+		update user_info set nickname=#{nickname},birthday=#{birthday},sex=#{sex},personalized_signature=#{personalizedSignature},head_portrait_path=#{headPortraitPath} where userid=#{userID}
+	</update>
+	<select id="selectUserInfoByUserID" parameterType="java.lang.String" resultType="UserInfo">
+		select id,userid,nickname,birthday,sex,personalized_signature,head_portrait_path from user_info where userid = #{userID}
+	</select>
+</mapper>
